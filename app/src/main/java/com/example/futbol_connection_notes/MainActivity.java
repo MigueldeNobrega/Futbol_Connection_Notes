@@ -14,15 +14,17 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton addNoteBtn;
-  //  RecyclerView recyclerView;
-  //  ImageButton menuBtn;
-  //  NoteAdapter noteAdapter;
+    RecyclerView recyclerView;
+    ImageButton menuBtn;
+    NoteAdapter noteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addNoteBtn = findViewById(R.id.add_note_btn);
-       // recyclerView = findViewById(R.id.recyler_view);
-      //  menuBtn = findViewById(R.id.menu_btn);
+        recyclerView = findViewById(R.id.recyler_view);
+        menuBtn = findViewById(R.id.menu_btn);
 
         addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)) );
-      //  menuBtn.setOnClickListener((v)->showMenu() );
-      //  setupRecyclerView();
+        menuBtn.setOnClickListener((v)->showMenu() );
+        setupRecyclerView();
     }
 
-  /*  void showMenu(){
+    void showMenu(){
         PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
         popupMenu.getMenu().add("Logout");
         popupMenu.show();
@@ -82,5 +84,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         noteAdapter.notifyDataSetChanged();
-    }*/
+    }
 }

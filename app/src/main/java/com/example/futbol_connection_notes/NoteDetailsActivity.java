@@ -55,7 +55,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         saveNoteBtn.setOnClickListener((v) -> saveNote());
 
-        //deleteNoteTextViewBtn.setOnClickListener((v)-> deleteNoteFromFirebase() );
+        deleteNoteTextViewBtn.setOnClickListener((v)-> deleteNoteFromFirebase() );
 
     }
 
@@ -98,7 +98,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         });
 
     }
-    /*
+
 
     void deleteNoteFromFirebase(){
         DocumentReference documentReference;
@@ -115,5 +115,5 @@ public class NoteDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-    }*/
+    }
     }
