@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/textUsuario"
+    <!-- Contenedor para el mensaje que se alineará a la derecha o izquierda -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="#FF6200EE"
-        android:text="Usuario"/>
+        android:orientation="vertical"
+        android:gravity="start"
+        android:id="@+id/layoutMensaje">
 
-    <TextView
-        android:id="@+id/textMensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mensaje"/>
+        <!-- Usuario que manda el mensaje -->
+        <TextView
+            android:id="@+id/textUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#FF6200EE"
+            android:text="Usuario"/>
+
+        <!-- Contenido del mensaje -->
+        <TextView
+            android:id="@+id/textMensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mensaje"
+            android:background="@drawable/message_background"
+            android:padding="8dp"
+            android:maxWidth="280dp"/>
+
+    </LinearLayout>
+
 </LinearLayout>
