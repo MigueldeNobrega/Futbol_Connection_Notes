@@ -65,11 +65,12 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void enviarMensaje() {
+
         String textoMensaje = editMensaje.getText().toString().trim();
         if (!textoMensaje.isEmpty()) {
             FirebaseUser usuarioActual = auth.getCurrentUser();
             if (usuarioActual != null) {
-                String nombreUsuario = usuarioActual.getDisplayName();
+                String nombreUsuario = usuarioActual.getEmail();
                 if (nombreUsuario == null || nombreUsuario.isEmpty()) {
                     nombreUsuario = "Anónimo";
                 }
