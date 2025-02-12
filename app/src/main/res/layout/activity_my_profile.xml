@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="20dp"
+android:gravity="center">
+
+<TextView
+    android:id="@+id/textEmail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Correo:"
+    android:textSize="18sp"
+    android:textStyle="bold"/>
+
+<EditText
+    android:id="@+id/editNewPassword"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/my_primary"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:hint="Nueva contraseña"
+    android:inputType="textPassword"
+    android:layout_marginTop="20dp"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+<Button
+    android:id="@+id/btnChangePassword"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Cambiar Contraseña"
+    android:layout_marginTop="10dp"/>
+
+<Button
+    android:id="@+id/btnLogout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Cerrar Sesión"
+    android:backgroundTint="@android:color/holo_red_light"
+    android:layout_marginTop="20dp"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@drawable/bottom_menu" />
+        android:layout_height="match_parent"
+        tools:context=".ChatActivity">
 
+        <!-- Aquí va el contenido del chat -->
 
-</RelativeLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:menu="@drawable/bottom_menu" />
 
+    </RelativeLayout>
+
+</LinearLayout>
