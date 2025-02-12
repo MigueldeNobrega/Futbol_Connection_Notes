@@ -22,7 +22,7 @@ public class LoadScreenSplash extends AppCompatActivity {
                 if(currentUser==null){
                     startActivity(new Intent(LoadScreenSplash.this,LoginActivity.class));
                 }else{
-                    startActivity(new Intent(LoadScreenSplash.this,ChatActivity.class));
+                    startActivity(new Intent(LoadScreenSplash.this,MainActivity.class));
                 }
                 finish();
             }

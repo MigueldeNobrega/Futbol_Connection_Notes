@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
@@ -38,7 +39,32 @@ public class MainActivity extends AppCompatActivity {
         addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)) );
         menuBtn.setOnClickListener((v)->showMenu() );
         setupRecyclerView();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        // Resaltar el ítem correspondiente
+        bottomNavigationView.setSelectedItemId(R.id.nav_main);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId(); // Obtener el ID seleccionado
+
+            if (itemId == R.id.nav_main) {
+                return true; // Ya estamos aquí
+            } else if (itemId == R.id.nav_chat) {
+                startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(getApplicationContext(), MyProfileActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+            return false;
+        });
     }
+
+
 
     void showMenu(){
         PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
