@@ -44,7 +44,7 @@ public class MyProfileActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.nav_chat) {
-                startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                startActivity(new Intent(getApplicationContext(), ForosActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             }

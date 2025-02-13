@@ -1,24 +1,57 @@
 package com.example.futbol_connection_notes;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ForosActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private ForosAdapter foroAdapter;
+    private List<Foro> listaForos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_foros);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        recyclerView = findViewById(R.id.recyclerForos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        listaForos = new ArrayList<>();
+
+        // Añadir foros predefinidos
+        listaForos.add(new Foro("Alavés", R.drawable.ala_logo));
+        listaForos.add(new Foro("Athletic Club", R.drawable.ath_logo));
+        listaForos.add(new Foro("Atlético de Madrid", R.drawable.atm_logo));
+        listaForos.add(new Foro("FC Barcelona", R.drawable.fcb_logo));
+        listaForos.add(new Foro("Real Betis", R.drawable.bet_logo));
+        listaForos.add(new Foro("CD Leganés", R.drawable.leg_logo_logo));
+        listaForos.add(new Foro("Celta de Vigo", R.drawable.cel_logo));
+        listaForos.add(new Foro("Las Palmas", R.drawable.lpa_logo));
+        listaForos.add(new Foro("RCD Espanyol", R.drawable.esp_logo));
+        listaForos.add(new Foro("Getafe CF", R.drawable.geta_logo));
+        listaForos.add(new Foro("Girona FC", R.drawable.gir_logo));
+        listaForos.add(new Foro("Osasuna", R.drawable.osa_logo));
+        listaForos.add(new Foro("Real Madrid", R.drawable.rma_logo));
+        listaForos.add(new Foro("Real Sociedad", R.drawable.rso_logo));
+        listaForos.add(new Foro("Rayo Vallecano", R.drawable.ray_logo));
+        listaForos.add(new Foro("Sevilla FC", R.drawable.sev_logo));
+        listaForos.add(new Foro("Valencia CF", R.drawable.vale_logo));
+        listaForos.add(new Foro("Real Valladolid", R.drawable.val_logo));
+        listaForos.add(new Foro("Villarreal CF", R.drawable.vill_logo));
+        listaForos.add(new Foro("RCD Mallorca", R.drawable.mll_logo));
+
+        // Añadir más foros según lo necesites
+
+        foroAdapter = new ForosAdapter(listaForos);
+        recyclerView.setAdapter(foroAdapter);
     }
 }
