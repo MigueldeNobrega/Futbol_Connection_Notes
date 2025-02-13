@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.nav_main) {
                 return true; // Ya estamos aquí
             } else if (itemId == R.id.nav_chat) {
-                startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                startActivity(new Intent(getApplicationContext(), ForosActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.nav_profile) {

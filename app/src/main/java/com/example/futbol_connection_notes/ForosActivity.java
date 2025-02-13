@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,33 @@ public class ForosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foros);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        // Resaltar el ítem correspondiente
+        bottomNavigationView.setSelectedItemId(R.id.nav_chat);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId(); // Obtener el ID seleccionado
+
+            if (itemId == R.id.nav_chat) {
+                return true; // Ya estamos aquí
+            } else if (itemId == R.id.nav_main) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(getApplicationContext(), MyProfileActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+            return false;
+        });
+
+
+
+
+
 
         recyclerView = findViewById(R.id.recyclerForos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
