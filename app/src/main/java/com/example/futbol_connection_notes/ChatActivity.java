@@ -1,5 +1,6 @@
 package com.example.futbol_connection_notes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -66,6 +67,8 @@ public class ChatActivity extends AppCompatActivity {
         btnEnviar.setOnClickListener(v -> enviarMensaje());
     }
 
+
+
     private void enviarMensaje() {
         String textoMensaje = editMensaje.getText().toString().trim();
         if (!textoMensaje.isEmpty()) {
@@ -125,6 +128,13 @@ public class ChatActivity extends AppCompatActivity {
                         chatAdapter.notifyDataSetChanged();
                         recyclerView.scrollToPosition(listaMensajes.size() - 1); // Auto-scroll al último mensaje
                     }
+
                 });
+        Button btnVolverAlMenu = findViewById(R.id.btn_GoToForos);
+        btnVolverAlMenu.setOnClickListener(v -> {
+            Intent intent = new Intent(ChatActivity.this, ForosActivity.class);
+            startActivity(intent);
+        });
     }
+
 }
