@@ -1,71 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="20dp"
-    android:gravity="center"
+    android:background="@color/white"
     tools:context=".ChatActivity">
 
-    <RelativeLayout
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Mi Perfil"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:id="@+id/textEmail"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textTitle"
+        android:layout_marginTop="124dp"
+        android:text="Correo: "
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <!-- Título "Mi Perfil" -->
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="46dp"
-            android:text="Mi Perfil"
-            android:textColor="#000000"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/editNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nueva contraseña"
+        android:inputType="textPassword"
+        android:layout_below="@id/textEmail"
+        android:layout_marginTop="20dp"/>
 
-        <TextView
-            android:id="@+id/textEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Correo: "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_below="@id/textTitle"
-            android:layout_centerHorizontal="true"/>
 
-        <EditText
-            android:id="@+id/editNewPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nueva contraseña"
-            android:inputType="textPassword"
-            android:layout_below="@id/textEmail"
-            android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cambiar Contraseña"
+        android:backgroundTint="#032D45"
+        android:layout_below="@id/editNewPassword"
+        android:layout_marginTop="10dp"/>
 
-        <Button
-            android:id="@+id/btnChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cambiar Contraseña"
-            android:backgroundTint="#032D45"
-            android:layout_below="@id/editNewPassword"
-            android:layout_marginTop="10dp"/>
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnChangePassword"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:text="Cerrar Sesión" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:layout_below="@id/btnChangePassword"
+        android:layout_marginTop="20dp"/>
 
-    </RelativeLayout>
-
+    
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -73,4 +70,4 @@
         android:layout_alignParentBottom="true"
         app:menu="@drawable/bottom_menu" />
 
-</LinearLayout>
+</RelativeLayout>

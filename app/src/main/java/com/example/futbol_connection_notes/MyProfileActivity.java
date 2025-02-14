@@ -35,7 +35,7 @@ public class MyProfileActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId(); // Obtener el ID seleccionado
+            int itemId = item.getItemId(); // Obtener el ID seleccionado para cambiar de actividad.
 
             if (itemId == R.id.nav_profile) {
                 return true; // Ya estamos aquí
@@ -56,23 +56,23 @@ public class MyProfileActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         FirebaseUser usuarioActual = auth.getCurrentUser();
 
-        // Vincular vistas
+
         textEmail = findViewById(R.id.textEmail);
         editNewPassword = findViewById(R.id.editNewPassword);
         btnChangePassword = findViewById(R.id.btnChangePassword);
         btnLogout = findViewById(R.id.btnLogout);
 
-        // Mostrar el correo del usuario autenticado
+        // Mostrar el correo del usuario
         if (usuarioActual != null) {
             textEmail.setText(usuarioActual.getEmail());
         } else {
-            textEmail.setText("No hay usuario autenticado");
+            textEmail.setText("No hay usuario iniciado");
         }
 
-        // Botón para cambiar la contraseña
+        // Para cambiar la contraseña
         btnChangePassword.setOnClickListener(v -> cambiarContrasena());
 
-        // Botón para cerrar sesión
+        // Para cerrar sesión
         btnLogout.setOnClickListener(v -> cerrarSesion());
     }
 
