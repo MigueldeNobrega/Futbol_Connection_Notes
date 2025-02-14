@@ -20,16 +20,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
-        <ImageButton
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:id="@+id/menu_btn"
-            android:src="@drawable/ic_baseline_menu_24"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:tint="@color/white"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            />
+
 
     </RelativeLayout>
 

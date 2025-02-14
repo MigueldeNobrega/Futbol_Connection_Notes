@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recyler_view);
-        menuBtn = findViewById(R.id.menu_btn);
+       // menuBtn = findViewById(R.id.menu_btn);
 
         addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)) );
-        menuBtn.setOnClickListener((v)->showMenu() );
+       // menuBtn.setOnClickListener((v)->showMenu() );
         setupRecyclerView();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    void showMenu(){
+   /* void showMenu(){
         PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
         popupMenu.getMenu().add("Logout");
         popupMenu.show();
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
     void setupRecyclerView(){
         Query query  = Utility.getCollectionReferenceForNotes().orderBy("timestamp",Query.Direction.DESCENDING);
