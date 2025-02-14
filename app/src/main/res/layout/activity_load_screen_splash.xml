@@ -4,25 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_primary"
-    android:orientation="vertical"
+    android:background="#032D45"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".LoadScreenSplash">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logofc" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
         android:text="Futbol Connection"
-        android:textSize="32sp"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:gravity="center" />
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
     <ProgressBar
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:indeterminateTint="@color/white"
         android:layout_margin="16dp"
-        />
+        android:indeterminateTint="@color/white" />
 
 </LinearLayout>
