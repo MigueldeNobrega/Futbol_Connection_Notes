@@ -64,7 +64,7 @@ public class MyProfileActivity extends AppCompatActivity {
 
         // Mostrar el correo del usuario autenticado
         if (usuarioActual != null) {
-            textEmail.setText("Correo: " + usuarioActual.getEmail());
+            textEmail.setText(usuarioActual.getEmail());
         } else {
             textEmail.setText("No hay usuario autenticado");
         }
