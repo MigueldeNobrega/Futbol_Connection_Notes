@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailEditText,passwordEditText;
     Button loginBtn;
-    ProgressBar progressBar;
+
     TextView createAccountBtnTextView;
 
     @Override
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         loginBtn = findViewById(R.id.login_btn);
-        progressBar = findViewById(R.id.progress_bar);
+
         createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
 
         loginBtn.setOnClickListener((v)-> loginUser() );
@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void loginUser(){
+        // Obtener datos ingresados por el usuario y validarlos
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
 
@@ -53,55 +54,46 @@ public class LoginActivity extends AppCompatActivity {
         if(!isValidated){
             return;
         }
-
+        // Si los datos son correctos, se inicia sesion con la autenticación en Firebase
         loginAccountInFirebase(email,password);
 
     }
 
     void loginAccountInFirebase(String email,String password){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        changeInProgress(true);
+
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                changeInProgress(false);
+
                 if(task.isSuccessful()){
-                    //login is success
+                    // Si el inicio de sesión es exitoso, verificar si el correo está validado, si no, mensaje de error.
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
-                        //go to mainactivity
+
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
                     }else{
-                        Utility.showToast(LoginActivity.this,"Email not verified, Please verify your email.");
+                        Utility.showToast(LoginActivity.this,"Cuenta no verificada. Revisa tu correo.");
                     }
 
                 }else{
-                    //login failed
-                    Utility.showToast(LoginActivity.this,task.getException().getLocalizedMessage());
+
+                    Utility.showToast(LoginActivity.this,"No se ha podido iniciar sesión.");
                 }
             }
         });
     }
 
-    void changeInProgress(boolean inProgress){
-        if(inProgress){
-            progressBar.setVisibility(View.VISIBLE);
-            loginBtn.setVisibility(View.GONE);
-        }else{
-            progressBar.setVisibility(View.GONE);
-            loginBtn.setVisibility(View.VISIBLE);
-        }
-    }
 
     boolean validateData(String email,String password){
-        //validate the data that are input by user.
+    //Verificar los datos introducidos por el usuario
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEditText.setError("Email is invalid");
+            emailEditText.setError("Correo electrónico no válido");
             return false;
         }
         if(password.length()<6){
-            passwordEditText.setError("Password length is invalid");
+            passwordEditText.setError("La contraseña tiene que tener mínimo 6 carácteres");
             return false;
         }
         return true;

@@ -25,18 +25,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello."
-            android:textStyle="bold"
+            android:text="Bienvenido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="32sp"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
-            android:textStyle="bold"
-            android:textSize="36sp"
-            android:textColor="@color/black"/>
+            android:text="Inicia Sesión"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="29sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -53,7 +55,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Email Id"
+            android:hint="Correo Electrónico"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -64,7 +66,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_edit_text"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -76,18 +78,12 @@
             android:layout_width="match_parent"
             android:id="@+id/login_btn"
             android:layout_height="64dp"
-            android:text="LogIn"
+            android:text="Iniciar Sesión"
             android:layout_marginTop="12dp"
+            android:textColorLink="#032D45"
             android:textSize="16sp"
             />
 
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="64dp"
-            android:id="@+id/progress_bar"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="12dp"/>
 
     </LinearLayout>
 
@@ -101,13 +97,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? "/>
+            android:textSize="18sp"
+            android:text="¿Aún no tienes cuenta? "/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:id="@+id/create_account_text_view_btn"
-            android:text="Create Account"/>
+            android:textSize="18sp"
+            android:text="Crear Cuenta"/>
 
     </LinearLayout>
 

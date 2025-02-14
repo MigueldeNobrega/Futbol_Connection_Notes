@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginVertical="16dp"
     android:layout_marginHorizontal="32dp"
+    android:background="@color/white"
     tools:context=".CreateAccountActivity">
     <ImageView
         android:layout_width="128dp"
@@ -25,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello."
+            android:text="Bienvenido"
             android:textStyle="bold"
             android:textSize="32sp"
             android:textColor="@color/black"/>
@@ -33,9 +34,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Let's get started"
+            android:text="Únete a Futbol Connection"
             android:textStyle="bold"
-            android:textSize="36sp"
+            android:textSize="29sp"
             android:textColor="@color/black"/>
 
     </LinearLayout>
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Email Id"
+            android:hint="Correo Electrónico"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -64,7 +65,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_edit_text"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -76,7 +77,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/confirm_password_edit_text"
             android:inputType="textPassword"
-            android:hint="Confirm Password"
+            android:hint="Repetir Contraseña"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -84,21 +85,14 @@
             />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
             android:id="@+id/create_account_btn"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:text="Create Account"
             android:layout_marginTop="12dp"
-            android:textSize="16sp"
-            />
+            android:text="Crear Cuenta"
+            android:textColorLink="#032D45"
+            android:textSize="16sp" />
 
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="64dp"
-            android:id="@+id/progress_bar"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="12dp"/>
 
     </LinearLayout>
 
@@ -112,13 +106,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account? "/>
+            android:textSize="18sp"
+            android:text="¿Ya tienes una cuenta?"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:id="@+id/login_text_view_btn"
-            android:text="Login"/>
+            android:textSize="18sp"
+            android:text=" Inicia Sesión"/>
 
     </LinearLayout>
 
