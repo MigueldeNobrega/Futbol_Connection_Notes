@@ -5,32 +5,31 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <!-- Contenedor para el mensaje que se alineará a la derecha o izquierda -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="start"
-        android:id="@+id/layoutMensaje">
 
-        <!-- Usuario que manda el mensaje -->
+    <LinearLayout
+        android:id="@+id/layoutMensaje"
+        android:layout_width="391dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical">
+
+
         <TextView
             android:id="@+id/textUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="#FF6200EE"
-            android:text="Usuario"/>
+            android:text="Usuario"
+            android:textColor="#032D45"
+            android:textStyle="bold" />
 
-        <!-- Contenido del mensaje -->
+
         <TextView
             android:id="@+id/textMensaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mensaje"
             android:background="@drawable/message_background"
             android:padding="8dp"
-            android:maxWidth="280dp"/>
+            android:text="Mensaje" />
 
     </LinearLayout>
 
