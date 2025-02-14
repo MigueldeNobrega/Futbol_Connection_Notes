@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton addNoteBtn;
     RecyclerView recyclerView;
-    ImageButton menuBtn;
     NoteAdapter noteAdapter;
 
     @Override
@@ -34,22 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recyler_view);
-       // menuBtn = findViewById(R.id.menu_btn);
 
-        addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)) );
-       // menuBtn.setOnClickListener((v)->showMenu() );
+        addNoteBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class)));
+
         setupRecyclerView();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-
-        // Resaltar el ítem correspondiente
         bottomNavigationView.setSelectedItemId(R.id.nav_main);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId(); // Obtener el ID seleccionado
+            int itemId = item.getItemId();
 
             if (itemId == R.id.nav_main) {
-                return true; // Ya estamos aquí
+                return true;
             } else if (itemId == R.id.nav_chat) {
                 startActivity(new Intent(getApplicationContext(), ForosActivity.class));
                 overridePendingTransition(0, 0);
@@ -64,33 +60,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-   /* void showMenu(){
-        PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
-        popupMenu.getMenu().add("Logout");
-        popupMenu.show();
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getTitle()=="Logout"){
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-    }*/
-
-    void setupRecyclerView(){
-        Query query  = Utility.getCollectionReferenceForNotes().orderBy("timestamp",Query.Direction.DESCENDING);
+    void setupRecyclerView() {
+        Query query = Utility.getCollectionReferenceForNotes().orderBy("timestamp", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
-                .setQuery(query,Note.class).build();
+                .setQuery(query, Note.class).build();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(options,this);
+        noteAdapter = new NoteAdapter(options, this);
         recyclerView.setAdapter(noteAdapter);
     }
 

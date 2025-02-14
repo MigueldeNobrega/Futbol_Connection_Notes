@@ -4,27 +4,54 @@ import com.google.firebase.Timestamp;
 
 public class Note {
 
-    String title;
-    String content;
+    String localTeam;
+    String visitorTeam;
+    int localGoals;
+    int visitorGoals;
+    String description;
     Timestamp timestamp;
 
     public Note() {
     }
 
-    public String getTitle() {
-        return title;
+    public String getLocalTeam() {
+        return localTeam;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setLocalTeam(String localTeam) {
+        this.localTeam = localTeam;
     }
 
-    public String getContent() {
-        return content;
+    public String getVisitorTeam() {
+        return visitorTeam;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setVisitorTeam(String visitorTeam) {
+        this.visitorTeam = visitorTeam;
+    }
+
+    public int getLocalGoals() {
+        return localGoals;
+    }
+
+    public void setLocalGoals(int localGoals) {
+        this.localGoals = localGoals;
+    }
+
+    public int getVisitorGoals() {
+        return visitorGoals;
+    }
+
+    public void setVisitorGoals(int visitorGoals) {
+        this.visitorGoals = visitorGoals;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Timestamp getTimestamp() {
@@ -34,6 +61,4 @@ public class Note {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
-
-
 }

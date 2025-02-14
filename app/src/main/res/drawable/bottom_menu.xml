@@ -2,5 +2,5 @@
     <menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:id="@+id/nav_main" android:icon="@drawable/longchecklist_122029" android:title="Mis Partidos"/>
         <item android:id="@+id/nav_chat" android:icon="@drawable/message_105089" android:title="Foro"/>
-        <item android:id="@+id/nav_profile" android:icon="@drawable/profile_picture_user_icon_153847" android:title="Perfil"/>
+        <item android:id="@+id/nav_profile" android:icon="@drawable/userbig" android:title="Perfil"/>
     </menu>
