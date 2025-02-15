@@ -50,9 +50,9 @@ public class ForosAdapter extends RecyclerView.Adapter<ForosAdapter.ViewHolder> 
         // Al hacer clic en un foro, se abre el chat correspondiente y se pasa el nombre y el logo
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ChatActivity.class);
-            intent.putExtra("foroNombre", foro.getNombre());  // Pasa el nombre del foro seleccionado
-            intent.putExtra("team_name", foro.getNombre()); // Pasar nombre del equipo
-            intent.putExtra("team_logo", foro.getImagenResourceId()); // Pasar ID del logo
+            intent.putExtra("foroNombre", foro.getNombre());
+            intent.putExtra("team_name", foro.getNombre());
+            intent.putExtra("team_logo", foro.getImagenResourceId());
             v.getContext().startActivity(intent);
         });
     }

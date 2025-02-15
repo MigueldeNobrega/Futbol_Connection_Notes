@@ -42,7 +42,7 @@ public class ForosActivity extends AppCompatActivity {
 
         listaForos = new ArrayList<>();
 
-        // Añadir foros predefinidos
+        // Añadir foros
         listaForos.add(new Foro("Alavés", R.drawable.ala_logo));
         listaForos.add(new Foro("Athletic Club", R.drawable.ath_logo));
         listaForos.add(new Foro("Atlético de Madrid", R.drawable.atm_logo));
@@ -64,7 +64,7 @@ public class ForosActivity extends AppCompatActivity {
         listaForos.add(new Foro("Villarreal CF", R.drawable.vill_logo));
         listaForos.add(new Foro("RCD Mallorca", R.drawable.mll_logo));
 
-        // Inicializar el adaptador con contexto y lista de foros
+        // Inicia el adaptador con contexto y lista de foros
         foroAdapter = new ForosAdapter(this, listaForos);
         recyclerView.setAdapter(foroAdapter);
     }

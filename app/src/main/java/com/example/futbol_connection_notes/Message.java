@@ -13,7 +13,7 @@ public class Message {
             this.mensaje = mensaje;
         }
 
-        // Getters
+
         public String getUsuario() {
             return usuario;
         }

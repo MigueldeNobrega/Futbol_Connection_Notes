@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     tools:context=".ChatActivity">
 
-    <!-- Barra superior con logo y nombre del equipo -->
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/chat_toolbar"
@@ -26,7 +26,6 @@
             android:orientation="horizontal">
 
 
-
             <ImageView
                 android:id="@+id/team_logo"
                 android:layout_width="48dp"
@@ -35,32 +34,34 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder" />
 
+
             <TextView
                 android:id="@+id/team_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Nombre del Equipo"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
             <Button
                 android:id="@+id/btn_GoToForos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
                 android:backgroundTint="#9BB6C6"
                 android:padding="8dp"
                 android:text="Volver"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
-
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Botón para volver -->
 
-    <!-- Lista de mensajes del chat -->
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"
@@ -72,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chat_toolbar" />
 
-    <!-- Contenedor de input y botón enviar -->
+
     <LinearLayout
         android:id="@+id/message_container"
         android:layout_width="match_parent"
@@ -83,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Campo de texto para escribir mensajes -->
+
         <EditText
             android:id="@+id/editMensaje"
             android:layout_width="0dp"
@@ -93,7 +94,7 @@
             android:padding="12dp"
             android:textSize="16sp"/>
 
-        <!-- Botón para enviar mensajes -->
+
         <Button
             android:id="@+id/btnEnviar"
             android:layout_width="wrap_content"

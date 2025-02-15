@@ -23,13 +23,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView usuario, mensaje;
-        LinearLayout layoutMensaje;  // Este es el contenedor que cambiará de gravedad
+        LinearLayout layoutMensaje;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             usuario = itemView.findViewById(R.id.textUsuario);
             mensaje = itemView.findViewById(R.id.textMensaje);
-            layoutMensaje = itemView.findViewById(R.id.layoutMensaje); // Agregamos la referencia
+            layoutMensaje = itemView.findViewById(R.id.layoutMensaje);
         }
     }
 
@@ -52,7 +52,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             // Si el mensaje es del usuario actual, alineamos a la derecha
             if (msg.getUsuario().equals(correoUsuario)) {
-                holder.layoutMensaje.setGravity(Gravity.END);  // Alineación a la derecha
+                holder.layoutMensaje.setGravity(Gravity.END);
             } else {
                 holder.layoutMensaje.setGravity(Gravity.START); // Alineación a la izquierda
             }

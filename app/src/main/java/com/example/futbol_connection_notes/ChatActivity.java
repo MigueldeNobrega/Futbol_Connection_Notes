@@ -47,7 +47,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        // Referencias a los elementos del layout
+
         teamLogo = findViewById(R.id.team_logo);
         teamName = findViewById(R.id.team_name);
         editMensaje = findViewById(R.id.editMensaje);
@@ -71,7 +71,7 @@ public class ChatActivity extends AppCompatActivity {
 
         }
         teamLogo.setImageResource(equipoLogo);
-        // Cargar la imagen del equipo si está disponible
+        // Cargar la imagen del equipo
         int imageResourceId = intent.getIntExtra("team_logo", 0);
         if (imageResourceId != 0) {
             teamLogo.setImageResource(imageResourceId);
@@ -79,7 +79,7 @@ public class ChatActivity extends AppCompatActivity {
             teamLogo.setImageResource(R.drawable.placeholder);
         }
 
-        // Configurar RecyclerView
+
         listaMensajes = new ArrayList<>();
         chatAdapter = new ChatAdapter(listaMensajes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

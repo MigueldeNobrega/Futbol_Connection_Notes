@@ -35,7 +35,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         pageTitleTextView = findViewById(R.id.page_title);
         deleteNoteTextViewBtn = findViewById(R.id.delete_note_text_view_btn);
 
-        // Recibir datos
+        // Recibir datos del Partido
         docId = getIntent().getStringExtra("docId");
         if (docId != null && !docId.isEmpty()) {
             isEditMode = true;
@@ -60,11 +60,11 @@ public class NoteDetailsActivity extends AppCompatActivity {
         String description = descriptionEditText.getText().toString();
 
         if (localTeam.isEmpty()) {
-            localTeamEditText.setError("El equipo local es obligatorio");
+            localTeamEditText.setError("Tienes que introducir el equipo local");
             return;
         }
         if (visitorTeam.isEmpty()) {
-            visitorTeamEditText.setError("El equipo visitante es obligatorio");
+            visitorTeamEditText.setError("Tienes que introducir el equipo visitante");
             return;
         }
 
@@ -90,7 +90,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Utility.showToast(NoteDetailsActivity.this, "Partido guardado exitosamente");
+                    Utility.showToast(NoteDetailsActivity.this, "Partido guardado correctamente");
                     finish();
                 } else {
                     Utility.showToast(NoteDetailsActivity.this, "Error al guardar partido: " + task.getException().getMessage());

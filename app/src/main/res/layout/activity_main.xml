@@ -8,7 +8,7 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <!-- Barra de título -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textStyle="bold"/>
     </RelativeLayout>
 
-    <!-- Lista de notas (RecyclerView) -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyler_view"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:layout_below="@id/title_bar_layout"
         android:layout_above="@id/bottomNavigation"/>
 
-    <!-- Botón flotante para agregar notas -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_btn"
         android:layout_width="wrap_content"
@@ -44,11 +44,12 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_add_24" />
 
-    <!-- Menú de navegación inferior -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:menu="@drawable/bottom_menu" />
