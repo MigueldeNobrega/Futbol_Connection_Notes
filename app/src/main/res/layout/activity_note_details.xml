@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_primary"
     android:padding="16dp"
     tools:context=".NoteDetailsActivity">
 
@@ -18,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Añadir Nuevo Partido"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -29,7 +28,7 @@
             android:src="@drawable/ic_baseline_done_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:tint="@color/white"
+            app:tint="@color/black"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
     </RelativeLayout>
@@ -89,7 +88,7 @@
             android:id="@+id/notes_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción"
+            android:hint="Notas"
             android:minLines="3"
             android:gravity="top"
             android:textSize="20sp"
@@ -107,6 +106,6 @@
         android:gravity="center"
         android:textSize="18sp"
         android:visibility="gone"
-        android:textColor="#FF0000"/>
+        android:textColor="#A80606"/>
 
 </RelativeLayout>

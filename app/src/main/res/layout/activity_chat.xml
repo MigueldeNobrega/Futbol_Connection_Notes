@@ -47,7 +47,6 @@
                 android:id="@+id/btn_GoToForos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
                 android:layout_marginLeft="100dp"
                 android:backgroundTint="#9BB6C6"
                 android:padding="8dp"

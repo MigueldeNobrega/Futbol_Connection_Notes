@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#032D45"
-    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
+    <!-- Barra de título -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,34 +20,37 @@
             android:id="@+id/page_title"
             android:text="Mis Partidos"
             android:textSize="32sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"/>
-
     </RelativeLayout>
 
+    <!-- Lista de notas (RecyclerView) -->
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/title_bar_layout"
-        android:id="@+id/recyler_view"/>
+        android:layout_above="@id/bottomNavigation"/>
 
+    <!-- Botón flotante para agregar notas -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottomNavigation"
+        android:layout_above="@id/bottomNavigation"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_add_24" />
 
+    <!-- Menú de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#F5F6F6"
+        android:background="@color/white"
         app:menu="@drawable/bottom_menu" />
 
 </RelativeLayout>
