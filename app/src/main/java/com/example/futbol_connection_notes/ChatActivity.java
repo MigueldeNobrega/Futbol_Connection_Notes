@@ -3,16 +3,18 @@ package com.example.futbol_connection_notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -36,23 +38,46 @@ public class ChatActivity extends AppCompatActivity {
     private List<Message> listaMensajes;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-
-    private String foroNombre;  // Aquí almacenaremos el nombre del foro seleccionado
+    private ImageView teamLogo;
+    private TextView teamName;
+    private String foroNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        // Recibir el nombre del foro que fue seleccionado en la ForosActivity
-        foroNombre = getIntent().getStringExtra("foroNombre");
-
+        // Referencias a los elementos del layout
+        teamLogo = findViewById(R.id.team_logo);
+        teamName = findViewById(R.id.team_name);
         editMensaje = findViewById(R.id.editMensaje);
         btnEnviar = findViewById(R.id.btnEnviar);
         recyclerView = findViewById(R.id.recyclerChat);
+        Button btnVolverAlMenu = findViewById(R.id.btn_GoToForos);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        // Recibir los datos del foro desde el Intent
+        Intent intent = getIntent();
+        foroNombre = intent.getStringExtra("foroNombre");
+        String equipoNombre = intent.getStringExtra("team_name");
+        int equipoLogo = intent.getIntExtra("team_logo", R.drawable.placeholder);
+
+        if (foroNombre != null) {
+            teamName.setText(equipoNombre);
+        } else {
+            Toast.makeText(this, "Error: No se pudo obtener el nombre del foro.", Toast.LENGTH_SHORT).show();
+
+        }
+        teamLogo.setImageResource(equipoLogo);
+        // Cargar la imagen del equipo si está disponible
+        int imageResourceId = intent.getIntExtra("team_logo", 0);
+        if (imageResourceId != 0) {
+            teamLogo.setImageResource(imageResourceId);
+        } else {
+            teamLogo.setImageResource(R.drawable.placeholder);
+        }
 
         // Configurar RecyclerView
         listaMensajes = new ArrayList<>();
@@ -65,9 +90,14 @@ public class ChatActivity extends AppCompatActivity {
 
         // Botón para enviar mensaje
         btnEnviar.setOnClickListener(v -> enviarMensaje());
+
+        // Botón para volver al menú de foros
+        btnVolverAlMenu.setOnClickListener(v -> {
+            Intent backIntent = new Intent(ChatActivity.this, ForosActivity.class);
+            startActivity(backIntent);
+            finish();
+        });
     }
-
-
 
     private void enviarMensaje() {
         String textoMensaje = editMensaje.getText().toString().trim();
@@ -79,20 +109,18 @@ public class ChatActivity extends AppCompatActivity {
                     nombreUsuario = "Anónimo";
                 }
 
-                // Crear objeto mensaje
                 Map<String, Object> mensaje = new HashMap<>();
                 mensaje.put("usuario", nombreUsuario);
                 mensaje.put("mensaje", textoMensaje);
                 mensaje.put("timestamp", System.currentTimeMillis());
 
-                // Guardar en Firestore en la subcolección del foro seleccionado
                 db.collection("foros")
-                        .document(foroNombre)  // Referencia al foro específico
+                        .document(foroNombre)
                         .collection("mensajes")
                         .add(mensaje)
                         .addOnSuccessListener(documentReference -> {
                             Log.d("Firestore", "Mensaje enviado con ID: " + documentReference.getId());
-                            editMensaje.setText(""); // Limpiar input después de enviar
+                            editMensaje.setText("");
                         })
                         .addOnFailureListener(e -> {
                             Log.e("Firestore", "Error al enviar mensaje", e);
@@ -105,36 +133,25 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void cargarMensajes() {
-        // Cargar los mensajes del foro seleccionado desde Firestore
         db.collection("foros")
-                .document(foroNombre)  // Seleccionamos el foro por nombre
+                .document(foroNombre)
                 .collection("mensajes")
                 .orderBy("timestamp", Query.Direction.ASCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(QuerySnapshot snapshots, FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Log.e("Firestore", "Error al recibir mensajes", e);
-                            return;
-                        }
-
-                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                Message mensaje = dc.getDocument().toObject(Message.class);
-                                listaMensajes.add(mensaje);
-                            }
-                        }
-
-                        chatAdapter.notifyDataSetChanged();
-                        recyclerView.scrollToPosition(listaMensajes.size() - 1); // Auto-scroll al último mensaje
+                .addSnapshotListener((snapshots, e) -> {
+                    if (e != null) {
+                        Log.e("Firestore", "Error al recibir mensajes", e);
+                        return;
                     }
 
-                });
-        Button btnVolverAlMenu = findViewById(R.id.btn_GoToForos);
-        btnVolverAlMenu.setOnClickListener(v -> {
-            Intent intent = new Intent(ChatActivity.this, ForosActivity.class);
-            startActivity(intent);
-        });
-    }
+                    for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                        if (dc.getType() == DocumentChange.Type.ADDED) {
+                            Message mensaje = dc.getDocument().toObject(Message.class);
+                            listaMensajes.add(mensaje);
+                        }
+                    }
 
+                    chatAdapter.notifyDataSetChanged();
+                    recyclerView.scrollToPosition(listaMensajes.size() - 1);
+                });
+    }
 }

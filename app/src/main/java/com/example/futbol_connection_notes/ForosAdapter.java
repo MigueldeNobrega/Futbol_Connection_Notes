@@ -1,5 +1,6 @@
 package com.example.futbol_connection_notes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,10 @@ import java.util.List;
 
 public class ForosAdapter extends RecyclerView.Adapter<ForosAdapter.ViewHolder> {
     private List<Foro> listaForos;
+    private Context context;
 
-    public ForosAdapter(List<Foro> listaForos) {
+    public ForosAdapter(Context context, List<Foro> listaForos) {
+        this.context = context;
         this.listaForos = listaForos;
     }
 
@@ -39,15 +42,17 @@ public class ForosAdapter extends RecyclerView.Adapter<ForosAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         Foro foro = listaForos.get(position);
         holder.nombreForo.setText(foro.getNombre());
         holder.imagenForo.setImageResource(foro.getImagenResourceId());
 
-        // Al hacer clic en un foro, se abre el chat correspondiente
+        // Al hacer clic en un foro, se abre el chat correspondiente y se pasa el nombre y el logo
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ChatActivity.class);
             intent.putExtra("foroNombre", foro.getNombre());  // Pasa el nombre del foro seleccionado
+            intent.putExtra("team_name", foro.getNombre()); // Pasar nombre del equipo
+            intent.putExtra("team_logo", foro.getImagenResourceId()); // Pasar ID del logo
             v.getContext().startActivity(intent);
         });
     }
